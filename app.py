@@ -139,18 +139,34 @@ elif page == "Student Voice Check-in":
             st.write(f"**Simulated Transcription:** {user_text}")
 
     # Analysis Result
+    # Analysis Result
     if user_text:
         st.markdown("---")
         st.subheader("AI Analysis")
         
-        # 1. Sentiment
+        # 1. Calculate Score
         score = sia.polarity_scores(user_text)['compound']
         st.metric("Detected Emotional Score", f"{score:.2f}")
         
-        # 2. Risk Context
-        if score < -0.5:
+        # 2. Define "Crisis Keywords" (The Override)
+        # These words trigger a flag even if the sentiment isn't -1.0
+        crisis_keywords = ["quit", "drop out", "leave", "give up", "failing", "can't take this"]
+        
+        # Check if any keyword is in the text
+        keyword_detected = any(word in user_text.lower() for word in crisis_keywords)
+
+        # 3. Smart Risk Logic
+        # Flag if score is very negative OR if they used a crisis keyword
+        if score < -0.25 or keyword_detected:
             st.error("⚠️ **Risk Flag Triggered:** The system has detected signs of distress.")
+            
+            if keyword_detected:
+                st.write(f"**Reason:** Keyword detected in text.")
+            else:
+                st.write(f"**Reason:** Sentiment score is critically low.")
+                
             st.write("Action: Notification sent to Student Counselor.")
+            
         elif score > 0.5:
             st.success("✅ **Positive Status:** Keep up the good work!")
         else:
@@ -207,4 +223,5 @@ elif page == "Project Info":
     *Created by Surendra G*
 
     """)
+
 
