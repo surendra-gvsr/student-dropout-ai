@@ -21,19 +21,19 @@ def load_resources():
 
 @st.cache_data
 def load_and_train_model():
-    # Load dataset (using direct URL to UCI to ensure it works online)
-    url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00697/predict+students'+dropout+and+academic+success.csv"
+    # NEW WORKING LINE: Load local file
     try:
-        df = pd.read_csv(url, sep=';')
+        # Try loading with semicolon separator (common for UCI)
+        df = pd.read_csv('data.csv', sep=';')
     except:
-        st.error("Could not load dataset from UCI.")
-        return None, None, None, None
+        # Fallback to comma if you saved it differently
+        df = pd.read_csv('data.csv', sep=',')
 
     # Preprocessing
     le = LabelEncoder()
-    df['Target'] = le.fit_transform(df['Target']) # Dropout=0, Enrolled=1, Graduate=2
+    df['Target'] = le.fit_transform(df['Target']) 
     
-    # Simple cleanup
+    # ... rest of the function remains the same ...
     X = df.drop('Target', axis=1)
     y = df['Target']
     
@@ -174,4 +174,5 @@ elif page == "Project Info":
     3.  **Fusion:** A weighted risk score is calculated to prioritize counselor interventions.
     
     *Created by [Your Name]*
+
     """)
