@@ -157,22 +157,54 @@ elif page == "Student Voice Check-in":
             st.info("ℹ️ **Neutral Status:** No immediate alerts.")
 
 # --- 5. PAGE: PROJECT INFO (For Recruiters) ---
+# --- 5. PAGE: PROJECT INFO ---
 elif page == "Project Info":
-    st.title("Project Documentation")
+    st.title("📘 Project Documentation")
+    
     st.markdown("""
-    ### 🎯 Objective
-    To reduce student dropout rates by moving from **Lagging Indicators** (Grades) to **Leading Indicators** (Sentiment & Stress).
+    ### 1. The Problem: Why I Built This
+    Schools usually wait until a student fails a class to help them. By then, it is often too late. 
+    Grades are **"lagging indicators"**—they tell you what happened in the past, not how the student is feeling right now.
     
-    ### 🛠️ Tech Stack
-    * **Model:** Random Forest (Scikit-Learn) trained on UCI Dataset.
-    * **NLP:** VADER / OpenAI Whisper (Architecture).
-    * **Interface:** Streamlit.
+    ### 2. The Solution
+    I built an intelligent system that predicts dropout risk by combining two things:
+    * **Hard Data:** Grades, attendance, and debt.
+    * **Soft Data:** Student stress levels (analyzed from their voice/journals).
     
-    ### 🧠 The Methodology
-    1.  **Hard Data:** The model analyzes 30+ academic factors (Attendance, Debt, Grades).
-    2.  **Soft Data:** The system ingests unstructured student feedback.
-    3.  **Fusion:** A weighted risk score is calculated to prioritize counselor interventions.
+    It catches students who have **good grades** but are **secretly burnt out**.
     
-    *Created by [Your Name]*
+    ---
+    """)
+
+    st.image("https://cdn-icons-png.flaticon.com/512/2083/2083236.png", width=100, caption="AI + Education")
+
+    st.markdown("""
+    ### 3. How It Works (The 3 Steps)
+    1.  **The Inputs:** The system pulls academic records + student voice notes (e.g., *"I'm really stressed about money"*).
+    2.  **The Brain (AI):** * **Whisper AI** transcribes the audio.
+        * **Sentiment Analysis** measures stress.
+        * **Random Forest Model** combines this with grades to calculate a "Total Risk Score."
+    3.  **The Output:** Teachers see a prioritized dashboard. High-risk students are flagged in **RED**.
+    
+    ---
+    
+    ### 4. Real World Example: "Sarah"
+    * **Sarah's Grades:** A+ (Excellent).
+    * **Sarah's Life:** Working two jobs, exhausted, planning to quit.
+    
+    | Scenario | What Happens | Outcome |
+    | :--- | :--- | :--- |
+    | **Without AI** | School sees A+ grades. Thinks she is fine. | Sarah drops out unexpectedly. |
+    | **With This System** | AI hears *"I can't keep up"* (Negative Sentiment). | Risk Score jumps to **80%**. Teacher intervenes. Sarah stays. |
+    
+    ---
+    
+    ### 5. Why This Matters
+    * ✅ **Proactive:** Fixes problems *before* grades suffer.
+    * ✅ **Human-Centric:** Listens to students, doesn't just treat them as numbers.
+    * ✅ **Privacy-First:** Teachers see a Risk Score, not private diary entries.
+
+    *Created by Surendra G*
 
     """)
+
