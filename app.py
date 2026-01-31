@@ -14,9 +14,20 @@ st.set_page_config(page_title="Student Dropout Risk AI", page_icon="🎓", layou
 # --- 1. SETUP & CACHING (The "Backend") ---
 @st.cache_resource
 def load_resources():
-    # Download NLTK data
     nltk.download('vader_lexicon', quiet=True)
     sia = SentimentIntensityAnalyzer()
+    
+    # --- NEW: UPDATE THE DICTIONARY ---
+    # We manually tell VADER that 'quit' is highly negative (-2.0)
+    new_words = {
+        'quit': -2.0,
+        'dropout': -2.5,
+        'fail': -2.0,
+        'overwhelmed': -1.5
+    }
+    sia.lexicon.update(new_words)
+    # ----------------------------------
+    
     return sia
 
 @st.cache_data
@@ -223,5 +234,6 @@ elif page == "Project Info":
     *Created by Surendra G*
 
     """)
+
 
 
