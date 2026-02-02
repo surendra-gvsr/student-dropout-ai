@@ -223,7 +223,8 @@ elif page == "⚡ Live Simulation":
 # --- 7. PAGE: DOCUMENTATION ---
 elif page == "Project Documentation":
     st.title("📘 Project Documentation")
-   st.markdown("""
+    
+    st.markdown("""
     ### 1. The Problem
     Schools usually wait until a student fails a class to help them. By then, it is often too late. 
     Grades are **"lagging indicators"**—they tell you what happened in the past, not how the student is feeling right now.
@@ -253,4 +254,5 @@ elif page == "Project Documentation":
     * **Scikit-Learn:** Random Forest Classifier (85% Accuracy).
     * **NLTK / VADER:** For Natural Language Processing.
     """)
+
 
