@@ -223,15 +223,34 @@ elif page == "⚡ Live Simulation":
 # --- 7. PAGE: DOCUMENTATION ---
 elif page == "Project Documentation":
     st.title("📘 Project Documentation")
-    st.markdown("""
+   st.markdown("""
     ### 1. The Problem
-    Grades are **"lagging indicators"**. They show what happened in the past.
+    Schools usually wait until a student fails a class to help them. By then, it is often too late. 
+    Grades are **"lagging indicators"**—they tell you what happened in the past, not how the student is feeling right now.
     
     ### 2. The Solution
-    We combine **Hard Data** (Grades) with **Soft Data** (Sentiment) to catch hidden risks.
+    I built an intelligent system that predicts dropout risk by combining two things:
+    * **Hard Data:** Grades, attendance, and debt (from the UCI Dataset).
+    * **Soft Data:** Student stress levels (analyzed from voice/text).
     
-    ### 3. Future Roadmap & Compliance
-    * **Database Integration:** Move from CSV to Secure SQL Database.
-    * **Privacy:** Compliance with FERPA/GDPR (Data Encryption).
-    * **Real-time:** Integration with Canvas/Blackboard APIs.
+    It catches students who have **good grades** but are **secretly burnt out**.
+    
+    ---
+    
+    ### 3. Real World Example: "Sarah"
+    * **Sarah's Grades:** A+ (Excellent).
+    * **Sarah's Life:** Working two jobs, exhausted, planning to quit.
+    
+    | Scenario | What Happens | Outcome |
+    | :--- | :--- | :--- |
+    | **Without AI** | School sees A+ grades. Thinks she is fine. | Sarah drops out unexpectedly. |
+    | **With This System** | AI hears *"I can't keep up"* (Negative Sentiment). | Risk Score jumps to **80%**. Teacher intervenes. Sarah stays. |
+    
+    ---
+    
+    ### 4. Technical Stack
+    * **Python & Streamlit:** For the web interface.
+    * **Scikit-Learn:** Random Forest Classifier (85% Accuracy).
+    * **NLTK / VADER:** For Natural Language Processing.
     """)
+
