@@ -127,7 +127,13 @@ if page == "Student Check-In (Landing)":
 # --- 5. PAGE: TEACHER DASHBOARD (UPDATED WITH DEMOGRAPHICS) ---
 elif page == "Teacher Dashboard (Demo)":
     st.title("🏫 Faculty Dashboard")
-    st.warning("**👀 DEMO MODE:** Data below is simulated for demonstration.")
+st.warning("""
+    **👀 DEMO MODE:** This page simulates what a **Teacher or Administrator** would see. 
+    The data below is **generated randomly** to show how the prioritization works.
+    """)
+    
+    st.markdown("### 📋 Monday Morning Risk Report")
+    st.write("This table ranks students by **Risk Level**. Teachers look at the RED flags first.")
     
     if st.button("🔄 Refresh Data"): st.cache_data.clear()
     
@@ -254,5 +260,6 @@ elif page == "Project Documentation":
     * **Scikit-Learn:** Random Forest Classifier (85% Accuracy).
     * **NLTK / VADER:** For Natural Language Processing.
     """)
+
 
 
